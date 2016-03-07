@@ -1,0 +1,37 @@
+{
+  "name": "react-priority-nav",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/substate/react-priority-nav.git"
+  },
+  "keywords": [
+    "React",
+    "PriorityNav",
+    "Accessible",
+    "Menu"
+  ],
+  "authors": [
+    "James Hill <jamie@tiltdigital.com.com> (https://github.com/jamiehill)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/substate/react-priority-nav/issues"
+  },
+  "homepage": "https://github.com/substate/react-priority-nav#readme",
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "webpack": "^1.12.14"
+  }
+}
