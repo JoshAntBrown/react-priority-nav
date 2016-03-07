@@ -1,7 +1,6 @@
-import {Component, PropTypes, cloneElement} from 'react';
+import React, {Component, cloneElement} from 'react';
 import {findDOMNode} from 'react-dom';
-import {classNames as cx} from 'common/util/ReactUtil';
-import {getElementContentWidth, viewportSize} from 'util';
+import {classNames as cx, getElementContentWidth} from './util';
 
 const OUTER = "outerWrapper";
 const TOGGLE = "TOGGLE";
@@ -125,8 +124,8 @@ class PriorityNav extends Component {
         const spanClasses = cx(`${navDropdown}-wrapper`, 'priority-nav__wrapper');
         return (
             <span className={spanClasses}>
-				{this.renderNavList()}
                 {this.renderNavToggle()}
+				{this.renderNavList()}
 			</span>
         )
     }
@@ -136,14 +135,16 @@ class PriorityNav extends Component {
      */
     renderNavList() {
         const {navDropdown, navStyles} = this.props;
-        const classNames = cx(navDropdown, 'priority-nav__dropdown menu', {'show': this.state.navVisible});
+        const classNames = cx(navDropdown, 'priority-nav__dropdown', {'show': this.state.navVisible});
         const props = {
             className: classNames,
             ref: NAV_LIST
         };
         return (
             <ul {...props} style={navStyles}>
-                {this.state.navItems}
+                {this.state.navVisible && this.state.navItems.length && (
+                    this.state.navItems
+                )}
             </ul>
         )
     }
@@ -216,7 +217,7 @@ class PriorityNav extends Component {
         this.state.navItemActive = false;
         this.state.navItems.forEach(child => {
             const className = child.props.className;
-            const itemActive = className.includes(itemActiveClass);
+            const itemActive = className && className.includes(itemActiveClass);
             if (!this.state.navItemActive && itemActive) {
                 this.state.navItemActive = true;
             }
@@ -318,9 +319,9 @@ PriorityNav.defaultProps = {
     navStyles: {},
 
     outterClass: 'priority-nav',
-    navDropdown: "navdropdown", // class used for the dropdown.
-    navDropdownToggle: "navdropdown-toggle", // class used for the dropdown toggle.
-    navDropdownLabel: 'MORE', // Text that is used for the dropdown toggle.
+    navDropdown: "nav__dropdown", // class used for the dropdown.
+    navDropdownToggle: "nav__dropdown-toggle", // class used for the dropdown toggle.
+    navDropdownLabel: 'more', // Text that is used for the dropdown toggle.
     throttleDelay: 50, // this will throttle the calculating logic on resize because i'm a responsible dev.
     offsetPixels: 0 // increase to decrease the time it takes to move an item.
 };

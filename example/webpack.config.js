@@ -1,33 +1,29 @@
 'use strict';
 
 var webpack = require('webpack');
+var root = __dirname;
 
 var config = {
-    entry: './src/index.js',
+    debug: true,
+    devtools: 'inline-source-map',
+    entry: [
+        'babel-polyfill',
+        root+'/app.js'
+    ],
     output: {
-        filename: 'dist/ReactPriorityNav.js',
-        libraryTarget: 'umd',
-        library: 'ReactPriorityNav'
-    },
-    externals: {
-        'react': {
-            root: 'React',
-            commonjs2: 'react',
-            commonjs: 'react',
-            amd: 'react'
-        },
-        'react-dom': {
-            root: 'ReactDOM',
-            commonjs2: 'react-dom',
-            commonjs: 'react-dom',
-            amd: 'react-dom'
-        },
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     module: {
-        loaders: [{
+        loaders: [
+            {
             test: /\.(?:js).?$/,
-            loader: 'babel-loader?cacheDirectory',
-            exclude: /(node_modules)/
+            exclude: /(node_modules)/,
+            loader: 'babel-loader?cacheDirectory'
+        }, {
+            test: /\.scss$/,
+            loaders: ["style", "css?root=.", "sass"],
+            include: root
         }, {
             test: /\.css$/,
             loader: 'style!css?sourceMap'

@@ -10,9 +10,4 @@
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
-  <component name="SvnConfiguration" SSL_PROTOCOLS="all">
-    <configuration>$USER_HOME$/.subversion</configuration>
-    <myIsUseDefaultProxy>true</myIsUseDefaultProxy>
-    <option name="sshConnectionType" value="PASSWORD" />
-  </component>
 </project>

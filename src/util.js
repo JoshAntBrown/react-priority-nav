@@ -2,6 +2,32 @@
  * Created by jamie on 07/03/2016.
  */
 
+export var classNames = function() {
+    var args = Array.prototype.slice.call(arguments);
+    var classes = [];
+    args.forEach((arg) => {
+        var argType = typeof arg;
+        // if string or number just add to classes
+        if (argType === 'string'  || argType === 'number') {
+            classes.push(arg);
+        }
+
+        // if an array, recurse values and add to classes
+        else if (Array.isArray(arg)) {
+            classes.push(classNames.apply(null, arg));
+        }
+
+        // if object, add to classes if value is truthy
+        else if (argType === 'object') {
+            for (var key in arg) {
+                if (arg.hasOwnProperty(key) && arg[key]) {
+                    classes.push(key);
+                }
+            }
+        }
+    });
+    return classes.join(' ');
+};
 
 /**
  * Get innerwidth without padding
