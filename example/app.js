@@ -2,7 +2,6 @@ import PriorityNav from '../src/priority-nav';
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 
-import 'font-awesome/css/font-awesome.css';
 import './scss/styles.scss';
 
 class App extends Component {
