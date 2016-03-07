@@ -10,8 +10,7 @@ var config = {
         ]
     },
     output: {
-        library: 'Redux',
-        libraryTarget: 'umd'
+
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
