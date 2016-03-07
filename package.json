@@ -1,7 +1,7 @@
 {
   "name": "react-priority-nav",
   "version": "0.0.1",
-  "description": "",
+  "description": "React accessible navigational menu that adds overflowing menu items to dropdown menu",
   "main": "lib/index.js",
   "directories": {
     "test": "test"
